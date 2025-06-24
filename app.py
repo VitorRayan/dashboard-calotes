@@ -62,7 +62,7 @@ def load_data():
         with zipfile.ZipFile(zip_file, 'r') as zip_ref:
             zip_ref.extractall('.')
 
-    df = pd.read_csv(file_name)
+    df = pd.read_csv('UCI_Credit_Card.csv')
 
     df['Educação'] = df['EDUCATION'].map({1: 'Pós-graduação', 2: 'Universitário', 3: 'Ensino Médio',
                                           4: 'Outros', 5: 'Outros', 6: 'Outros', 0: 'Outros'})
