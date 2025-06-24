@@ -53,6 +53,10 @@ def load_data():
     file_name = 'UCI_Credit_Card.csv'
     zip_file = 'default-of-credit-card-clients-dataset.zip'
 
+    import os
+    os.environ['KAGGLE_USERNAME'] = st.secrets["kaggle_username"]
+    os.environ['KAGGLE_KEY'] = st.secrets["kaggle_key"]
+
     api = KaggleApi()
     api.authenticate()
 
@@ -71,6 +75,7 @@ def load_data():
     df['Calote'] = df['default.payment.next.month'].map({0: 'Não Deu Calote', 1: 'Deu Calote'})
     df['Faixa_Idade'] = pd.cut(df['AGE'], bins=range(20, 81, 10), right=False)
     return df
+
 
 # ===== Carregar dados =====
 df = load_data()
